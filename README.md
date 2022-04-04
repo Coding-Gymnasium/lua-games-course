@@ -4,4 +4,4 @@
 
 to run LOVE:
 
-$ /Applications/love.app/Contents/MacOS/love <project folder name>
+`$ /Applications/love.app/Contents/MacOS/love <project folder name>`
