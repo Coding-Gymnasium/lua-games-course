@@ -109,6 +109,7 @@ end
 --]]
 
 -- *----- Functions --------*
+--[[
 local message = 0
 local chicken = 0
 
@@ -130,4 +131,18 @@ function love.draw()
   love.graphics.setFont(love.graphics.newFont(50))
   love.graphics.print(message)
   love.graphics.print(chicken, 0, 60)
+end
+--]]
+-- *----- Global and Local Variables --------*
+message = 0 -- global variable
+
+function getHalf(i)
+  local var = i -- local variable
+  var = var / 2
+  return var
+end
+
+function love.draw()
+  love.graphics.setFont(love.graphics.newFont(50))
+  love.graphics.print(var) -- errors out becuase var is not a global variable
 end
