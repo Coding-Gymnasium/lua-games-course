@@ -15,17 +15,35 @@
 -- end
 
 -- *----- Conditionals --------*
+-- *--- If statements ---*
 local message = 0
 local condition = 25
 
+-- if condition > 0 then
+--   message = 1
+-- end
+--
+-- if condition <= 0 then
+--   message = -1
+-- end
+
+-- *--- If - Else statements ---*
+
+-- if condition > 0 then
+--   message = 1
+-- else
+--   message = -1
+-- end
+
+-- *--- If - Elseif statements ---*
+
 if condition > 0 then
   message = 1
-end
-
-if condition <= 0 then
+elseif condition < -10 then
   message = -1
+else
+  message = "no conditions met"
 end
-
 
 function love.draw()
   love.graphics.setFont(love.graphics.newFont(50))
