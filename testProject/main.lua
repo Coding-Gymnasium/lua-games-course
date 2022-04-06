@@ -1,5 +1,5 @@
 -- *----- Variables --------*
--- message = "Lua is awesome!!!"
+-- message = 'Lua is awesome!!!'
 --[[
 local message = 5 -- we can also print numbers
 local chicken = 10
@@ -46,7 +46,7 @@ end
  elseif condition < -10 then
    message = -1
  else
-   message = "no conditions met"
+   message = 'no conditions met'
  end
 
  function love.draw()
@@ -134,6 +134,7 @@ function love.draw()
 end
 --]]
 -- *----- Global and Local Variables --------*
+--[[
 message = 0 -- global variable
 
 function getHalf(i)
@@ -145,4 +146,43 @@ end
 function love.draw()
   love.graphics.setFont(love.graphics.newFont(50))
   love.graphics.print(var) -- errors out becuase var is not a global variable
+end
+--]]
+-- *----- Tables -----*
+--[[
+local message = 0
+local testScores = {}
+-- local testScores = {95, 87, 98} -- manually setting values
+
+-- *--- Adding values by using indexes
+-- testScores[1] = 95 -- in lua collections start at index 1 not 0
+-- testScores[2] = 87
+-- testScores[3] = 98
+
+-- *--- Adding values by inserting them
+table.insert(testScores, 95)
+table.insert(testScores, 87)
+table.insert(testScores, 98)
+
+message = testScores[2]
+
+-- *--- Inserting other values
+testScores['math'] = 91
+message = testScores['math']
+--]]
+
+-- *--- Iterating over tables
+local message = 0
+local testScores = {95, 87, 98}
+testScores.subject = 'science'
+
+for i,s in ipairs(testScores) do 
+  -- i represents the index, s represent the value at that index
+  message = message + s
+end
+
+function love.draw()
+  love.graphics.setFont(love.graphics.newFont(50))
+  love.graphics.print(message)
+  love.graphics.print(testScores.subject, 0, 60)
 end
