@@ -51,21 +51,50 @@
 -- end
 
 -- *----- While Loops --------*
+-- local message = 0
+-- local test = 0
+--
+-- -- while message < 10 do
+-- --   message = message + 1
+-- -- end
+--
+-- while message < 100 do
+--   message = message + 1
+--   test = test - 5
+-- end
+--
+-- function love.draw()
+--   love.graphics.setFont(love.graphics.newFont(50))
+--   love.graphics.print(message, 0, 0)
+--   love.graphics.print(test, 0, 60)
+-- end
+
+-- *----- For Loops --------*
 local message = 0
 local test = 0
-
--- while message < 10 do
---   message = message + 1
--- end
+local pickle = 0
 
 while message < 100 do
   message = message + 1
   test = test - 5
 end
 
+-- for i=1, 3, 1 do
+--   pickle = pickle + 10
+-- end
+-- outputs 30
+
+-- for i=10, 3, -1 do
+--   pickle = pickle + 10
+-- end
+-- outputs 80
+
+for i=1, 3, 1 do
+  pickle = pickle + i
+end
+-- outputs 6
+
 function love.draw()
   love.graphics.setFont(love.graphics.newFont(50))
-  love.graphics.print(message, 0, 0)
-  love.graphics.print(test, 0, 60)
+  love.graphics.print(pickle)
 end
-
