@@ -70,31 +70,56 @@
 -- end
 
 -- *----- For Loops --------*
-local message = 0
-local test = 0
-local pickle = 0
-
-while message < 100 do
-  message = message + 1
-  test = test - 5
-end
-
+-- local message = 0
+-- local test = 0
+-- local pickle = 0
+--
+-- while message < 100 do
+--   message = message + 1
+--   test = test - 5
+-- end
+--
+-- -- for i=1, 3, 1 do
+-- --   pickle = pickle + 10
+-- -- end
+-- -- outputs 30
+--
+-- -- for i=10, 3, -1 do
+-- --   pickle = pickle + 10
+-- -- end
+-- -- outputs 80
+--
 -- for i=1, 3, 1 do
---   pickle = pickle + 10
+--   pickle = pickle + i
 -- end
--- outputs 30
-
--- for i=10, 3, -1 do
---   pickle = pickle + 10
+-- -- outputs 6
+--
+-- function love.draw()
+--   love.graphics.setFont(love.graphics.newFont(50))
+--   love.graphics.print(pickle)
 -- end
--- outputs 80
 
-for i=1, 3, 1 do
-  pickle = pickle + i
+-- *----- Functions --------*
+
+local message = 0
+local chicken = 0
+
+local function increaseMessage(i)
+  message = message + i
 end
--- outputs 6
+
+local function double(val)
+  val = val * 2
+  return val
+end
+
+-- increaseMessage(10)
+
+message = double(20)
+chicken = double(message)
 
 function love.draw()
   love.graphics.setFont(love.graphics.newFont(50))
-  love.graphics.print(pickle)
+  love.graphics.print(message)
+  love.graphics.print(chicken, 0, 60)
 end
