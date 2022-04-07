@@ -22,12 +22,25 @@ end
 
 function love.mousepressed(x, y, button, istouch, presses)
   if button == 1 then
-    score = score + 1 
+    local mouseToTarget = distanceBetween(x, y, target.x, target.y)
+    if mouseToTarget < target.radius then
+      score = score + 1
+    end
   end
+end
+
+function distanceBetween(x1, y1, x2, y2)
+  return math.sqrt( (x2 - x1)^2 + (y2 - y1)^2)
 end
 
 --[[
   Notes:
+  Calculating distance:
+  distance formula: 
+    d = √(x2 - x1)² + (y₂ - y₁)²
+  written in code:
+    return math.sqrt( (x2 - x1)^2 + (y2 - y1)^2)
+
   Mouse interaction:
   love.mousepressed(x, y, button, istouch, presses)
   button values: 1 equals left mouse button, 2 the secondary button.
