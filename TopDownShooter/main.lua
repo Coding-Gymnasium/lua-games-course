@@ -27,9 +27,15 @@ function love.update(dt)
     player.y = player.y - player.speed * dt
   end
 
-  for i,z in ipairs(zombies) do
-    z.x = z.x + ( math.cos(zombiePlayerMouseAngle(z)) * z.speed * dt )
-    z.y = z.y + ( math.sin(zombiePlayerMouseAngle(z)) * z.speed * dt )
+  for i, z in ipairs(zombies) do
+    z.x = z.x + (math.cos(zombiePlayerMouseAngle(z)) * z.speed * dt)
+    z.y = z.y + (math.sin(zombiePlayerMouseAngle(z)) * z.speed * dt)
+
+    if distanceBetween(z.x, z.y, player.x, player.y) < 30 then
+      for i,z in ipairs(zombies) do
+        zombies[i] = nil
+      end
+    end
   end
 end
 
@@ -38,7 +44,7 @@ function love.draw()
 
   love.graphics.draw(sprites.player, player.x, player.y, playerMouseAngle(), nil, nil, sprites.player:getWidth() / 2, sprites.player:getHeight() / 2)
 
-  for i,z in ipairs(zombies) do
+  for i, z in ipairs(zombies) do
     love.graphics.draw(sprites.zombie, z.x, z.y, zombiePlayerMouseAngle(z), nil, nil, sprites.zombie:getWidth() / 2, sprites.zombie:getHeight() / 2)
   end
 end
@@ -63,4 +69,8 @@ function spawnZombie()
   zombie.y = math.random(0, love.graphics.getHeight())
   zombie.speed = 100
   table.insert(zombies, zombie)
+end
+
+function distanceBetween(x1, y1, x2, y2)
+  return math.sqrt((x2 - x1) ^ 2 + (y2 - y1) ^ 2)
 end
