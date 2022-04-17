@@ -55,7 +55,7 @@ function love.draw()
   end
 
   for i, b in ipairs(bullets) do
-    love.graphics.draw(sprites.bullet, b.x, b.y)
+    love.graphics.draw(sprites.bullet, b.x, b.y, nil, 0.5, nil, sprites.bullet:getWidth() / 2, sprites.bullet:getHeight() / 2)
   end
 end
 
